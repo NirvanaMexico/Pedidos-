@@ -1,0 +1,14 @@
+{
+  "name": "Lista de Pedidos",
+  "short_name": "Pedidos",
+  "lang": "es",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#e9eef2",
+  "theme_color": "#1f4e79",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
