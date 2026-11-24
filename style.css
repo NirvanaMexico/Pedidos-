@@ -1,0 +1,110 @@
+:root{
+  --bg:#e9eef2; --card:#ffffff; --ink:#14202b; --muted:#5b6b79; --line:#dde4ea;
+  --brand:#1f4e79; --green:#1b8a3c; --red:#c62828; --field:#f4f7f9;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#10161c; --card:#1a232c; --ink:#eef3f7; --muted:#9aabb9; --line:#2b3844; --brand:#6fa8dc; --field:#222e39; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:18px; line-height:1.35;
+  padding:env(safe-area-inset-top,0px) 0 calc(env(safe-area-inset-bottom,0px) + 16px);
+}
+.app{max-width:620px; margin:0 auto; padding:14px 14px 0}
+.card{background:var(--card); border-radius:18px; padding:16px; margin-bottom:14px; box-shadow:0 1px 0 var(--line)}
+
+/* Encabezado */
+.head{--ls:96px; display:flex; gap:14px; align-items:center}
+.logo-col{flex:0 0 var(--ls); display:flex; flex-direction:column; align-items:center; gap:6px}
+.logo-wrap{position:relative; width:var(--ls); height:var(--ls)}
+.badge{position:absolute; right:-6px; bottom:-6px; width:30px; height:30px; border-radius:50%; background:var(--brand); color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:15px; border:2px solid var(--card); pointer-events:none}
+.quitar{background:none; color:var(--muted); font-size:13px; font-weight:600; text-decoration:underline; padding:2px 4px; border-radius:6px}
+.badge[hidden],.quitar[hidden]{display:none}
+.logo{
+  flex:none; width:var(--ls); height:var(--ls); border-radius:16px; border:2px dashed var(--line);
+  background:var(--field); display:flex; align-items:center; justify-content:center; text-align:center;
+  color:var(--muted); font-size:14px; font-weight:600; cursor:pointer; overflow:hidden; padding:0;
+}
+.logo img{width:100%; height:100%; object-fit:contain; display:block}
+.logo.has{border-style:solid; border-color:transparent; background:#fff}
+.dest{flex:1; min-width:0}
+.dest label{display:block; font-size:14px; color:var(--muted); font-weight:600; margin-bottom:4px}
+.dest input{font-size:22px; font-weight:700}
+
+/* Campos */
+label.l{display:block; font-size:14px; color:var(--muted); font-weight:600; margin:0 0 4px}
+input,select{
+  width:100%; font:inherit; color:var(--ink); background:var(--field);
+  border:2px solid var(--line); border-radius:12px; padding:12px 14px; min-height:52px; outline:none;
+}
+input:focus,select:focus,button:focus-visible{border-color:var(--brand); outline:3px solid color-mix(in srgb,var(--brand) 30%,transparent); outline-offset:1px}
+.row{display:flex; gap:10px; margin-top:12px}
+.row > div{flex:1; min-width:0}
+#otraWrap{display:none; margin-top:12px}
+#otraWrap.on{display:block}
+
+button{font:inherit; cursor:pointer; border:0; border-radius:14px; -webkit-tap-highlight-color:transparent}
+.add{
+  width:100%; margin-top:14px; min-height:60px; background:var(--brand); color:#fff;
+  font-size:21px; font-weight:700;
+}
+.add:active,.big:active{transform:scale(.98)}
+
+/* Tabla */
+.thead,.item{display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center}
+.thead{font-size:14px; color:var(--muted); font-weight:600; padding:0 2px 8px; border-bottom:2px solid var(--line)}
+.item{padding:12px 2px; border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.pname{font-size:21px; font-weight:600; overflow-wrap:anywhere}
+.qty{display:flex; align-items:center; gap:6px; justify-content:flex-end}
+.qtxt{min-width:84px; text-align:center; font-size:20px; font-weight:700; line-height:1.15}
+.qtxt small{display:block; font-size:14px; font-weight:500; color:var(--muted)}
+.mini{
+  width:40px; height:40px; background:var(--field); color:var(--ink); font-size:24px; font-weight:700;
+  border:1px solid var(--line); border-radius:10px; display:flex; align-items:center; justify-content:center; padding:0;
+}
+.del{color:var(--red); margin-left:4px}
+.del svg{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.empty{padding:22px 4px 8px; text-align:center; color:var(--muted)}
+.summary{
+  margin-top:10px; background:var(--brand); color:#fff; border-radius:12px; padding:14px;
+  font-size:20px; font-weight:700; text-align:center;
+}
+.summary.off{display:none}
+
+/* Acciones */
+.actions{display:grid; gap:12px}
+.big{width:100%; min-height:64px; font-size:22px; font-weight:700; color:#fff}
+.wa{background:var(--green)}
+.img{background:#1769c2}
+.last{background:#3d4f61}
+.big[hidden]{display:none}
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.pair .big{font-size:19px; line-height:1.15; padding:10px 8px}
+.vista{position:fixed; inset:0; z-index:50; display:flex; overflow:auto; -webkit-overflow-scrolling:touch;
+  background:radial-gradient(ellipse at 50% 25%,#233343 0%,#0e161e 70%,#0a1016 100%);
+  padding:calc(env(safe-area-inset-top,0px) + 56px) 12px calc(env(safe-area-inset-bottom,0px) + 28px)}
+.vista[hidden]{display:none}
+.vista img{display:block; margin:auto; width:100%; max-width:640px; height:auto; background:#fff; border-radius:14px;
+  box-shadow:0 18px 50px rgba(0,0,0,.55); -webkit-touch-callout:default; -webkit-user-select:auto; user-select:auto}
+.vista-x{position:fixed; top:calc(env(safe-area-inset-top,0px) + 10px); right:12px; width:36px; height:36px; padding:0;
+  border-radius:50%; background:rgba(255,255,255,.12); color:rgba(255,255,255,.75); font-size:17px; line-height:36px; text-align:center}
+.vista-x:active{background:rgba(255,255,255,.25)}
+.clr{background:var(--red)}
+.toast{
+  position:fixed; left:50%; bottom:calc(env(safe-area-inset-bottom,0px) + 22px); transform:translateX(-50%) translateY(20px);
+  background:#14202b; color:#fff; padding:12px 20px; border-radius:30px; font-size:17px; font-weight:600;
+  opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; max-width:90%; text-align:center;
+}
+.toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
+@media (max-width:420px){
+  .head{--ls:80px}
+  .qty{gap:3px} .qtxt{min-width:52px; font-size:19px}
+  .mini{width:36px; height:36px; font-size:22px}
+  .pname{font-size:18px; overflow-wrap:break-word; word-break:normal}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important} }
