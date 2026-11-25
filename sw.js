@@ -1,6 +1,6 @@
 // Permite usar la app sin internet.
-var VERSION='pedidos-v3';
-var ARCHIVOS=['./','index.html','manifest.webmanifest','icon.svg'];
+var VERSION='pedidos-v4';
+var ARCHIVOS=['./','index.html','style.css','app1.js','app2.js','manifest.webmanifest','icon.svg'];
 
 self.addEventListener('install',function(e){
   e.waitUntil(caches.open(VERSION).then(function(c){return c.addAll(ARCHIVOS);}).then(function(){return self.skipWaiting();}));
